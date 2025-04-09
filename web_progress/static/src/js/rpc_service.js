@@ -26,7 +26,7 @@ function _download(options) {
             data = {'context': JSON.parse(options.data.context)};
             legacyProgressAjax.genericRelayEvents('/web/', 'call', data);
             options.data.context = JSON.stringify(data.context);
-        } else if (options.data.data) {
+        } else if (typeof options.data.data === 'string' && !(options.data.data instanceof Blob)) {
             // export
             data = JSON.parse(options.data.data);
             legacyProgressAjax.genericRelayEvents('/web/', 'call', data);
